@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package com.example.proto;
+
+// 登录请求数据
+message LoginData {
+	string username = 1;                   
+	string password = 2;                  
+}
+
+message User {
+	string id = 1;
+	string name = 2;
+}
+
+message Void {
+
+}
+
+service userHandler{
+	rpc login(LoginData) returns(User);
+	rpc logout(Void) returns(Void);
+}

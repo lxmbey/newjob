@@ -1,0 +1,44 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.3.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	//spring相关
+	compile('org.springframework.boot:spring-boot-starter')
+    //compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.8.RELEASE'
+    compile group: 'org.springframework', name: 'spring-orm', version: '4.3.8.RELEASE'
+    compile group: 'org.springframework', name: 'spring-aspects', version: '4.3.8.RELEASE'
+
+    //hibernate jpa相关
+    compile 'org.slf4j:slf4j-api:1.7.14',
+	'org.hibernate:hibernate-core:4.3.11.Final',
+	'org.hibernate:hibernate-c3p0:4.3.11.Final',
+	'org.hibernate:hibernate-entitymanager:4.3.11.Final',
+	'org.hibernate:hibernate-ehcache:4.3.11.Final',
+	'mysql:mysql-connector-java:5.1.39',
+	'com.mchange:mchange-commons-java:0.2.11','org.apache.commons:commons-lang3:3.4'
+	
+	compile 'io.netty:netty-all:4.0.36.Final','com.google.code.gson:gson:2.6.2','com.google.protobuf:protobuf-java:3.3.0'
+		
+	//testCompile('org.springframework.boot:spring-boot-starter-test')
+}
