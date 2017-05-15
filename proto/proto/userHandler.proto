@@ -17,7 +17,15 @@ message Void {
 
 }
 
-service userHandler{
+message Packet{
+	string name = 1;
+	bytes data = 2;
+	int32 messageIndex = 3;
+}
+
+service userService{
+	// 登录
 	rpc login(LoginData) returns(User);
+	// 登出
 	rpc logout(Void) returns(Void);
 }

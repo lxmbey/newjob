@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.common.AllFunctions;
 import com.example.common.AllFunctions.MethodWrapper;
+import com.example.proto.UserHandler.Packet;
 import com.google.protobuf.Message;
 
 import io.netty.bootstrap.ServerBootstrap;
@@ -43,17 +44,20 @@ public class NettyBootstrap {
 
 							@Override
 							public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-								Request session = new Request();
-								session.packet = (Packet) msg;
-								session.channel = ctx.channel();
-								MethodWrapper method = AllFunctions.getMethod(session.packet.name);
+								Request request = new Request();
+								request.packet = (Packet) msg;
+								request.channel = ctx.channel();
+								MethodWrapper method = AllFunctions.getMethod(request.packet.getName());
 								if (method == null) {
-									System.out.println("不存在的协议" + session.packet.name);
+									System.out.println("不存在的协议" + request.packet.getName());
 									return;
 								}
-								Message message = (Message) method.method.invoke(method.instance, session);
+								Message message = (Message) method.method.invoke(method.instance, request);
 								if (message != null) {
-									ctx.channel().writeAndFlush(new Packet(session.packet.name, message.toByteArray()));
+									Packet.Builder packet = Packet.newBuilder();
+									packet.setName(request.packet.getName());
+									packet.setData(message.toByteString());
+									ctx.channel().writeAndFlush(packet.build());
 								}
 							}
 

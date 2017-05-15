@@ -1,5 +1,7 @@
 package com.example.net;
 
+import com.example.proto.UserHandler.Packet;
+
 import io.netty.channel.Channel;
 
 public class Request {
