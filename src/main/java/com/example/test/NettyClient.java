@@ -42,7 +42,7 @@ public class NettyClient {
 					@Override
 					public void channelActive(ChannelHandlerContext ctx) throws Exception {
 						LoginData.Builder data = LoginData.newBuilder();
-						data.setUsername("李雄明");
+						data.setUsername("wzy");
 						data.setPassword(System.currentTimeMillis() + "");
 						Packet.Builder packet = Packet.newBuilder();
 						packet.setName("user/login");
