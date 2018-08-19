@@ -2343,6 +2343,325 @@ public final class UserHandler {
 
   }
 
+  /**
+   * Protobuf service {@code com.example.proto.userService}
+   */
+  public static abstract class userService
+      implements com.google.protobuf.Service {
+    protected userService() {}
+
+    public interface Interface {
+      /**
+       * <pre>
+       * 登录
+       * </pre>
+       *
+       * <code>rpc login(.com.example.proto.LoginData) returns (.com.example.proto.User);</code>
+       */
+      public abstract void login(
+          com.google.protobuf.RpcController controller,
+          com.example.proto.UserHandler.LoginData request,
+          com.google.protobuf.RpcCallback<com.example.proto.UserHandler.User> done);
+
+      /**
+       * <pre>
+       * 登出
+       * </pre>
+       *
+       * <code>rpc logout(.com.example.proto.Void) returns (.com.example.proto.Void);</code>
+       */
+      public abstract void logout(
+          com.google.protobuf.RpcController controller,
+          com.example.proto.UserHandler.Void request,
+          com.google.protobuf.RpcCallback<com.example.proto.UserHandler.Void> done);
+
+    }
+
+    public static com.google.protobuf.Service newReflectiveService(
+        final Interface impl) {
+      return new userService() {
+        @java.lang.Override
+        public  void login(
+            com.google.protobuf.RpcController controller,
+            com.example.proto.UserHandler.LoginData request,
+            com.google.protobuf.RpcCallback<com.example.proto.UserHandler.User> done) {
+          impl.login(controller, request, done);
+        }
+
+        @java.lang.Override
+        public  void logout(
+            com.google.protobuf.RpcController controller,
+            com.example.proto.UserHandler.Void request,
+            com.google.protobuf.RpcCallback<com.example.proto.UserHandler.Void> done) {
+          impl.logout(controller, request, done);
+        }
+
+      };
+    }
+
+    public static com.google.protobuf.BlockingService
+        newReflectiveBlockingService(final BlockingInterface impl) {
+      return new com.google.protobuf.BlockingService() {
+        public final com.google.protobuf.Descriptors.ServiceDescriptor
+            getDescriptorForType() {
+          return getDescriptor();
+        }
+
+        public final com.google.protobuf.Message callBlockingMethod(
+            com.google.protobuf.Descriptors.MethodDescriptor method,
+            com.google.protobuf.RpcController controller,
+            com.google.protobuf.Message request)
+            throws com.google.protobuf.ServiceException {
+          if (method.getService() != getDescriptor()) {
+            throw new java.lang.IllegalArgumentException(
+              "Service.callBlockingMethod() given method descriptor for " +
+              "wrong service type.");
+          }
+          switch(method.getIndex()) {
+            case 0:
+              return impl.login(controller, (com.example.proto.UserHandler.LoginData)request);
+            case 1:
+              return impl.logout(controller, (com.example.proto.UserHandler.Void)request);
+            default:
+              throw new java.lang.AssertionError("Can't get here.");
+          }
+        }
+
+        public final com.google.protobuf.Message
+            getRequestPrototype(
+            com.google.protobuf.Descriptors.MethodDescriptor method) {
+          if (method.getService() != getDescriptor()) {
+            throw new java.lang.IllegalArgumentException(
+              "Service.getRequestPrototype() given method " +
+              "descriptor for wrong service type.");
+          }
+          switch(method.getIndex()) {
+            case 0:
+              return com.example.proto.UserHandler.LoginData.getDefaultInstance();
+            case 1:
+              return com.example.proto.UserHandler.Void.getDefaultInstance();
+            default:
+              throw new java.lang.AssertionError("Can't get here.");
+          }
+        }
+
+        public final com.google.protobuf.Message
+            getResponsePrototype(
+            com.google.protobuf.Descriptors.MethodDescriptor method) {
+          if (method.getService() != getDescriptor()) {
+            throw new java.lang.IllegalArgumentException(
+              "Service.getResponsePrototype() given method " +
+              "descriptor for wrong service type.");
+          }
+          switch(method.getIndex()) {
+            case 0:
+              return com.example.proto.UserHandler.User.getDefaultInstance();
+            case 1:
+              return com.example.proto.UserHandler.Void.getDefaultInstance();
+            default:
+              throw new java.lang.AssertionError("Can't get here.");
+          }
+        }
+
+      };
+    }
+
+    /**
+     * <pre>
+     * 登录
+     * </pre>
+     *
+     * <code>rpc login(.com.example.proto.LoginData) returns (.com.example.proto.User);</code>
+     */
+    public abstract void login(
+        com.google.protobuf.RpcController controller,
+        com.example.proto.UserHandler.LoginData request,
+        com.google.protobuf.RpcCallback<com.example.proto.UserHandler.User> done);
+
+    /**
+     * <pre>
+     * 登出
+     * </pre>
+     *
+     * <code>rpc logout(.com.example.proto.Void) returns (.com.example.proto.Void);</code>
+     */
+    public abstract void logout(
+        com.google.protobuf.RpcController controller,
+        com.example.proto.UserHandler.Void request,
+        com.google.protobuf.RpcCallback<com.example.proto.UserHandler.Void> done);
+
+    public static final
+        com.google.protobuf.Descriptors.ServiceDescriptor
+        getDescriptor() {
+      return com.example.proto.UserHandler.getDescriptor().getServices().get(0);
+    }
+    public final com.google.protobuf.Descriptors.ServiceDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+
+    public final void callMethod(
+        com.google.protobuf.Descriptors.MethodDescriptor method,
+        com.google.protobuf.RpcController controller,
+        com.google.protobuf.Message request,
+        com.google.protobuf.RpcCallback<
+          com.google.protobuf.Message> done) {
+      if (method.getService() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "Service.callMethod() given method descriptor for wrong " +
+          "service type.");
+      }
+      switch(method.getIndex()) {
+        case 0:
+          this.login(controller, (com.example.proto.UserHandler.LoginData)request,
+            com.google.protobuf.RpcUtil.<com.example.proto.UserHandler.User>specializeCallback(
+              done));
+          return;
+        case 1:
+          this.logout(controller, (com.example.proto.UserHandler.Void)request,
+            com.google.protobuf.RpcUtil.<com.example.proto.UserHandler.Void>specializeCallback(
+              done));
+          return;
+        default:
+          throw new java.lang.AssertionError("Can't get here.");
+      }
+    }
+
+    public final com.google.protobuf.Message
+        getRequestPrototype(
+        com.google.protobuf.Descriptors.MethodDescriptor method) {
+      if (method.getService() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "Service.getRequestPrototype() given method " +
+          "descriptor for wrong service type.");
+      }
+      switch(method.getIndex()) {
+        case 0:
+          return com.example.proto.UserHandler.LoginData.getDefaultInstance();
+        case 1:
+          return com.example.proto.UserHandler.Void.getDefaultInstance();
+        default:
+          throw new java.lang.AssertionError("Can't get here.");
+      }
+    }
+
+    public final com.google.protobuf.Message
+        getResponsePrototype(
+        com.google.protobuf.Descriptors.MethodDescriptor method) {
+      if (method.getService() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "Service.getResponsePrototype() given method " +
+          "descriptor for wrong service type.");
+      }
+      switch(method.getIndex()) {
+        case 0:
+          return com.example.proto.UserHandler.User.getDefaultInstance();
+        case 1:
+          return com.example.proto.UserHandler.Void.getDefaultInstance();
+        default:
+          throw new java.lang.AssertionError("Can't get here.");
+      }
+    }
+
+    public static Stub newStub(
+        com.google.protobuf.RpcChannel channel) {
+      return new Stub(channel);
+    }
+
+    public static final class Stub extends com.example.proto.UserHandler.userService implements Interface {
+      private Stub(com.google.protobuf.RpcChannel channel) {
+        this.channel = channel;
+      }
+
+      private final com.google.protobuf.RpcChannel channel;
+
+      public com.google.protobuf.RpcChannel getChannel() {
+        return channel;
+      }
+
+      public  void login(
+          com.google.protobuf.RpcController controller,
+          com.example.proto.UserHandler.LoginData request,
+          com.google.protobuf.RpcCallback<com.example.proto.UserHandler.User> done) {
+        channel.callMethod(
+          getDescriptor().getMethods().get(0),
+          controller,
+          request,
+          com.example.proto.UserHandler.User.getDefaultInstance(),
+          com.google.protobuf.RpcUtil.generalizeCallback(
+            done,
+            com.example.proto.UserHandler.User.class,
+            com.example.proto.UserHandler.User.getDefaultInstance()));
+      }
+
+      public  void logout(
+          com.google.protobuf.RpcController controller,
+          com.example.proto.UserHandler.Void request,
+          com.google.protobuf.RpcCallback<com.example.proto.UserHandler.Void> done) {
+        channel.callMethod(
+          getDescriptor().getMethods().get(1),
+          controller,
+          request,
+          com.example.proto.UserHandler.Void.getDefaultInstance(),
+          com.google.protobuf.RpcUtil.generalizeCallback(
+            done,
+            com.example.proto.UserHandler.Void.class,
+            com.example.proto.UserHandler.Void.getDefaultInstance()));
+      }
+    }
+
+    public static BlockingInterface newBlockingStub(
+        com.google.protobuf.BlockingRpcChannel channel) {
+      return new BlockingStub(channel);
+    }
+
+    public interface BlockingInterface {
+      public com.example.proto.UserHandler.User login(
+          com.google.protobuf.RpcController controller,
+          com.example.proto.UserHandler.LoginData request)
+          throws com.google.protobuf.ServiceException;
+
+      public com.example.proto.UserHandler.Void logout(
+          com.google.protobuf.RpcController controller,
+          com.example.proto.UserHandler.Void request)
+          throws com.google.protobuf.ServiceException;
+    }
+
+    private static final class BlockingStub implements BlockingInterface {
+      private BlockingStub(com.google.protobuf.BlockingRpcChannel channel) {
+        this.channel = channel;
+      }
+
+      private final com.google.protobuf.BlockingRpcChannel channel;
+
+      public com.example.proto.UserHandler.User login(
+          com.google.protobuf.RpcController controller,
+          com.example.proto.UserHandler.LoginData request)
+          throws com.google.protobuf.ServiceException {
+        return (com.example.proto.UserHandler.User) channel.callBlockingMethod(
+          getDescriptor().getMethods().get(0),
+          controller,
+          request,
+          com.example.proto.UserHandler.User.getDefaultInstance());
+      }
+
+
+      public com.example.proto.UserHandler.Void logout(
+          com.google.protobuf.RpcController controller,
+          com.example.proto.UserHandler.Void request)
+          throws com.google.protobuf.ServiceException {
+        return (com.example.proto.UserHandler.Void) channel.callBlockingMethod(
+          getDescriptor().getMethods().get(1),
+          controller,
+          request,
+          com.example.proto.UserHandler.Void.getDefaultInstance());
+      }
+
+    }
+
+    // @@protoc_insertion_point(class_scope:com.example.proto.userService)
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_example_proto_LoginData_descriptor;
   private static final 
@@ -2380,7 +2699,7 @@ public final class UserHandler {
       "userService\022>\n\005login\022\034.com.example.proto" +
       ".LoginData\032\027.com.example.proto.User\022:\n\006l" +
       "ogout\022\027.com.example.proto.Void\032\027.com.exa" +
-      "mple.proto.Voidb\006proto3"
+      "mple.proto.VoidB\003\210\001\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

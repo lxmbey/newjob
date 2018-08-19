@@ -1,4 +1,5 @@
 syntax = "proto3";
+option java_generic_services = true;
 
 package com.example.proto;
 
